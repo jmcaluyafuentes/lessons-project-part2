@@ -1,0 +1,5 @@
+Bonus - for extra fun and learning!
+
+1. Add an image element with an image of the book cover for each book (can be a link to an image, or you can add an image to the scaffold).
+
+2. Change the style of the book information shown depending on whether you have read it or not. For example, you might change the font or background colour of the book title.

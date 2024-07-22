@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+   	<head>
+  		<meta charset="utf-8"/>
+   		<title>Book List</title>
+  	</head>
+   	<body>
+		   <h1>My Book List</h1>
+	</body>
+	<script>
+		var books = [
+			{
+			title: 'The Design of EveryDay Things',
+			author: 'Don Norman',
+			alreadyRead: false
+			}, 
+			{
+				title: 'The Most Human Human',
+				author: 'Brian Christian',
+				alreadyRead: true
+			}
+    	];
+		
+		const ul = document.createElement('ul')
+		document.querySelector('body').appendChild(ul)
+
+		for (let i=0; i<books.length; i++){
+			let li = document.createElement('li')
+			li.textContent= `Title: ${books[i].title}, Author: ${books[i].author}`
+			ul.appendChild(li)
+		}
+	</script>
+</html>
