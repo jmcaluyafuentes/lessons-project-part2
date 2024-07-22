@@ -1,0 +1,2 @@
+
+import { getOnePokemon } from 
