@@ -8,9 +8,14 @@ mongoose.connect(process.env.DB_URI)
     .catch(err => console.error(err))
 
 const Entry = mongoose.model('Entry', {
-    category: {type: String, required: true},
-    content: {type: String, required: true}
+    category: { type: String, required: true },
+    content: { type: String, required: true }
+})
+
+const Category = mongoose.model('Category', {
+    name: { type: String, required: true }
 })
 
 // index.js needs to access Entry model
-export { Entry }
+export { Entry, Category }
+

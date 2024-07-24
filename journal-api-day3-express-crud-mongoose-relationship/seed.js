@@ -1,5 +1,12 @@
 import mongoose from 'mongoose'
-import { Entry } from './db.js'
+import { Entry, Category } from './db.js'
+
+const categories = [
+    { name: 'Food' },
+    { name: 'Gaming' },
+    { name: 'Coding' },
+    { name: 'Other' }
+]
 
 const entries = [
     { id: 1, category: 'Food', content: 'Pizza is yummy!' },
@@ -8,7 +15,14 @@ const entries = [
 ]
 
 // Ensure there is "db.categories.drop()" in seed.mongodb.js
-// drop is mongoDB method
+// drop() method is a mongoDB method
+
+await Category.deleteMany() // deleteMany is mongoose method
+console.log('Deleted Categories')
+
+await Category.insertMany(categories) // insertMany is mongoose method
+console.log('Added Categories')
+
 await Entry.deleteMany() // deleteMany is mongoose method
 console.log('Deleted Entries')
 
@@ -17,3 +31,4 @@ console.log('Added Entries')
 
 // This is to disconnect the connection after running 'npm run seed' while server is running.
 mongoose.disconnect()
+

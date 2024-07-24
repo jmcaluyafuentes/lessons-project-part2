@@ -20,12 +20,17 @@ use('journal'); // Since journal did  not exist yet, it automatically creates jo
 db.categories.drop()
 
 // db.getCollection('categories').insertMany([
-db.categories.insertMany([ // If categories does not exist, it will automatically creates the collection named categories
-    { name: 'Food' },
-    { name: 'Gaming' },
-    { name: 'Coding' },
-    { name: 'Other' }
-])
+
+// 'db.categories' is shorthand
+
+// Refactor: Move to seed.js
+
+// db.categories.insertMany([ // If categories does not exist, it will automatically creates the collection named categories
+//     { name: 'Food' },
+//     { name: 'Gaming' },
+//     { name: 'Coding' },
+//     { name: 'Other' }
+// ])
 
 // Insert a few documents into the sales collection.
 // db.getCollection('sales').insertMany([
