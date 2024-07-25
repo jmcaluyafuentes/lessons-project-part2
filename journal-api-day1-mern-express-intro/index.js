@@ -21,7 +21,7 @@ const app = express() // Create an instance of express. Calling the express func
 // run 'npm start'
 //      npm will look for package.json and scripts.start
 //      --watch will keep watching any updates in js script
-//      note: if name of script is not 'start' eg. 'starti', then run 'npm run starti"
+//      note: if name of script is not 'start' (eg. 'starti'), then run 'npm run starti"
 
 
 // Middleware philosopy in express
