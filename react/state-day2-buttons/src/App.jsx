@@ -28,7 +28,7 @@ const App = () => {
         {/* <BitcoinIndex currency="AUD"/> */}
         <BitcoinIndex currency={currency}/>
         {/* We can use a button */}
-        {/* <CurrencySelector setCurrency={setCurrency}/> */}
+        {/* <CurrencySelector setCurrency={setCurrency}/> // This is not good approach because we are exposing the implementastion of useState of parent to child component*/}
         <CurrencySelector setCurrency={updateCurrency}/>
 
     </>

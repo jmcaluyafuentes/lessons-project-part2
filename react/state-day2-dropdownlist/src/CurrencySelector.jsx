@@ -20,9 +20,9 @@ const CurrencySelector = ({ currency, setCurrency }) => { // This is not good ap
 
   return (
     // <div> {/* use div rather then fragment because we want to layoyut the buttons on the page */}
-    <select value={currency} onChange={evt => setCurrency(evt.target.value)}>  
-        {/* Two-way binding: Update select when the currency has changed */}
-        {/* It is also called control component */}
+    <select value={currency} onChange={(evt) => setCurrency(evt.target.value)}>  
+        {/* "Two-way binding": Update select when the currency has changed */}
+        {/* In React it is also called "Control Component" */}
 
         {/* <button onClick={() => setCurrency('AUD')}>Australian Dollar (AUD)</button>
         <button onClick={() => setCurrency('USD')}>US Dollar (USD)</button>

@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from 'react'
+
 let countCallComponent = 0;
-const BitcoinIndex = () => {
+
+const BitcoinIndex = ({currency}) => {
     let [price, setPrice] = useState(0);
 
     console.log(countCallComponent, price)
+
+    console.log(currency)
 
     useEffect(()=> console.log('useEffect triggered'))
 
     countCallComponent += 1;
 
-    // console.log('Fetching...')
-    fetch('https://api.coindesk.com/v1/bpi/currentprice/AUD.json')
+    useEffect(()=> {
+        fetch(`https://api.coindesk.com/v1/bpi/currentprice/${currency}.json`)
         .then((res) => res.json())
-        .then((data) => setPrice(data.bpi.AUD.rate))
-
+        .then((data) => setPrice(data.bpi[currency].rate))
+    }, [currency])
+    
   return (
     <>
-        <h2>Current Price (AUD): {price}</h2>
+        <h2>Current Price ({currency}): {price}</h2>
     </>
   )
 }
