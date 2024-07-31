@@ -8,6 +8,9 @@ import React, { useState, useEffect } from 'react'
     // React is expecting a return JSX and not a promise 
 const BitcoinIndex = ({ foo }) => {
     const [price, setPrice] = useState(0)
+    // useState returns an array (getter and getter) with anonymous names
+    // The names are arbitrary (in this example, we called it price and setPrice)
+    // console.log(userState(0))
 
     // All useEffects will be triggered on mount
 
@@ -31,7 +34,7 @@ const BitcoinIndex = ({ foo }) => {
         fetch('https://api.coindesk.com/v1/bpi/currentprice/AUD.json')
             .then(res => res.json())
             .then(data => setPrice(data.bpi.AUD.rate))
-    }, [])
+    }, []) // Second parameter is an empty array of dependencies
 
     // const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice/AUD.json')
     // const data = await res.json()
