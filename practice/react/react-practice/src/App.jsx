@@ -6,12 +6,17 @@ import './App.css'
 
 function App() {
   // const [count, setCount] = useState(0)
-  const [currency, setCurrency] = useState('AUD')
+  const [currency, setCurrency] = useState('JPY')
+
+  const updateCurrency = (value) => {
+    setCurrency(value)
+  }
+
   return (
     <>
       <h1>Bitcoin Index</h1>
       <BitcoinIndex currency={currency}/>
-      <CurrencySelector setCurrency={setCurrency}/>
+      <CurrencySelector setCurrency={updateCurrency} currency={currency}/>
       {/* <Counter/> */}
     </>
 
