@@ -8,7 +8,7 @@ const App = () => {
   const [currency, setCurrency] = useState("AUD")
     // Place the currency state to parent component because multiple children components depend on it 
     // This term is called 'lifting state up'
-    // Bitcoin and CurrencySelector are siblings components. Their parent it the App component
+    // Bitcoin and CurrencySelector are siblings components. Their parent is the App component
 
   // Create a function in such a way that child component will not know the useState setCurrency or any complex implementation in parent component
   const updateCurrency = (code) => {
