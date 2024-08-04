@@ -2,7 +2,7 @@ class LibraryItem {
     constructor(title, author) {
         this.title = title;
         this.author = author;
-        this.isBorrowed = false;
+        this.isBorrowed = this.isBorrowed;
     }
 
     borrow() {
@@ -10,7 +10,7 @@ class LibraryItem {
             this.isBorrowed = true;
             console.log(`${this.title} has been borrowed.`)
         } else {
-            console.log(`${this.title} is already borrowed.`);
+            console.log(`${this.title} is not available.`)
         }
     }
 
@@ -24,29 +24,29 @@ class LibraryItem {
     }
 
     getDetails() {
-        return `${this.title} by ${this.author} is ${this.isBorrowed ? 'currently borrowed': 'available for borrow.'}`
+        return `${this.title} with author ${this.author} is ${this.isBorrowed ? 'not available.': 'available.'}`
     }
 }
 
 class Book extends LibraryItem {
-    constructor (title, author, isbn) {
+    constructor (title, author, isbn = 'no info') {
         super(title, author);
         this.isbn = isbn;
     }
 
     getDetails() {
-        return `${super.getDetails()} ISBN: ${this.isbn}`;
+        return `${super.getDetails()}, ISBN: ${this.isbn}`
     }
 }
 
 class DVD extends LibraryItem {
-    constructor (title, author, duration) {
+    constructor (title, author, duration = 'No info') {
         super(title, author);
         this.duration = duration;
     }
 
     getDetails() {
-        return `${super.getDetails()} Duration: ${this.duration} minutes`
+        return `${super.getDetails()}, duration: ${this.duration}`
     }
 }
 
@@ -57,15 +57,16 @@ class Library {
 
     addItem(item) {
         this.items.push(item);
-        console.log(`${item.title} added to the library.`);
+        console.log(`${item.title} is added to the library.`)
     }
 
     borrowItem(title) {
-        const item = this.items.find(item => item.title === title)
+        // Query if item with given title is in the list of items
+        const item = this.items.find(item => item.title === title);
         if (item) {
-            item.borrow();
+            item.borrow(); 
         } else {
-            console.log(`Item with title ${title} not found.`)
+            console.log(`${title} not found.`)
         }
     }
 
@@ -74,39 +75,33 @@ class Library {
         if (item) {
             item.return();
         } else {
-            console.log(`Item with title ${title} not found.`)
+            console.log(`${item.title} not found.`)
         }
     }
 
     listAvailableItems() {
-        console.log('Available items:');
+        console.log('Available items:')
         this.items
             .filter(item => !item.isBorrowed)
-            .forEach(item => console.log(item.getDetails()));
+            .forEach(item => console.log(item.getDetails()))
     }
 }
 
-// Usage
+const harryPotter = new Book('Harry Potter', 'John');
+// harryPotter.borrow();
+// console.log(harryPotter.getDetails());
+// harryPotter.return();
+// console.log(harryPotter.getDetails());
+
 const library = new Library();
-
-const book1 = new Book('1984', 'George Orwell', '1234567890');
-const dvd1 = new DVD('The Matrix', 'Wachowskis', 136);
-
-library.addItem(book1);
-library.addItem(dvd1);
-
+library.addItem(harryPotter);
+library.borrowItem('Harry Potter');
+library.returnItem('Harry Potter');
 library.listAvailableItems();
 
-library.borrowItem('1984');
-library.returnItem('1984');
-
+const magazine = new LibraryItem('Reader\'s Digest', 'Mark');
+library.addItem(magazine)
 library.listAvailableItems();
-
-const magazine = new LibraryItem('Reader\'s Digest', 'Bebong');
+console.log(magazine.getDetails());
 magazine.borrow();
-magazine.return();
-magazine.getDetails();
-console.log(magazine.title);
-console.log(magazine.author);
-magazine.author = 'John';
-console.log(magazine.author);
+console.log(magazine.getDetails());
