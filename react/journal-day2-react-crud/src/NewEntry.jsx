@@ -1,39 +1,42 @@
-import React, { useState } from "react"
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-// Pass the state as prop from parent App to child
 const NewEntry = ({ categories, addEntry }) => {
-    const [content, setContent] = useState('')
-    
-    const { cat_id } = useParams() // useParams always return a string
+  const { cat_id } = useParams() // useParams always returns a string
 
-    // Find a match in categories from CategorySelection with cat_id
-    const cat = categories.find(c => c.id == cat_id)
+  const [content, setContent] = useState('')
 
-    const submitHandle = e => {
-        e.preventDefault(); // preventDefault() will prevent the browser to do full reload
-        // Add the new entry to the list of entries
-        addEntry(cat.id, content)
-        // Return success message or redirect to the entry
-    }
+  const cat = categories.find((cat) => cat.id == cat_id) // cat.id from categories is a number while cat_id is a string, thus, use non-strict equality to perform type coersion
+  // console.log(cat_name)
 
-    return cat ? (
-        <div class="container is-fluid">
-        <h2 class="my-2 is-size-5">New Entry in category {cat.name}</h2>
-        <form onSubmit={submitHandle}> 
-            <div class="field">
-                <div class="control">
-                    <textarea value={content} onChange={e => setContent(e.target.value)} class="textarea" placeholder="Type your entry here"></textarea>
-                </div>
-            </div>
-            <div class="control">
-                <button class="button is-primary">Create Entry</button>
-            </div>
-        </form>
+  const submitHandler = (e) => {
+    e.preventDefault() // preventDefault() will prevent browser to reload when button is clicked
+    // Add the new entry to the list of entries
+    addEntry(cat.id, content)
+    // Return success message or redirect to the entry
+  }
+  
+  return cat ? ( 
+    // Display the name of the found category
+    <div className="container is-fluid">
+      <h2 className="my-2 is-size-5">New Entry in category {cat.name}</h2> 
+      <form onSubmit={submitHandler}> 
+        <div className="field">
+          <div className="control">
+          <textarea value={content} onChange={e => setContent(e.target.value)} className="textarea" placeholder="Type your entry here" name='' id=''></textarea>
+          {/* "Controlled component" or "two-way binding" between the state and the textarea element */}
+          </div>
         </div>
-    ) : (
-        <h2>Invalid category ID!</h2>
-    )
+        <div>
+          <button className="button is-primary mt-2">Create Entry</button>
+        </div>
+      </form>
+    </div>
+  ) : ( 
+    // If cat_id is not found in the categories array:
+    <h3>Invalid Category ID!</h3>
+    // <Redirect to='/category' />
+  )
 }
 
 export default NewEntry
