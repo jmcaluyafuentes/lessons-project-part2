@@ -38,7 +38,11 @@ import entryRoutes from './routes/entry_routes.js'
 //     content: {type: String, required: true}
 // })
 
+import cors from 'cors'
+
 const app = express()
+
+app.use(cors())
 
 app.use(express.json())
 
