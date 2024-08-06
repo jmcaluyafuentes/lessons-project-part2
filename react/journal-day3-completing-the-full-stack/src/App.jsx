@@ -42,17 +42,19 @@ const App = () => {
         // Create a new entry from the parameters
         // const newEntry = { id: newEntryId++, category: cat_id, content: content }
         const newEntry = { category: cat_id, content: content }
+        // console.log(newEntry) // ok
 
         // Post newEntry to the API and receive the returnedEntry
         const res = await fetch('http://localhost:4001/entries', {
             method: 'POST', 
-            heders: {
+            headers: {
                 'Content-Type': 'application/json' // "application" is a mime type
             },
             body: JSON.stringify(newEntry)
         })
 
         const returnedEntry = await res.json()
+        // console.log(returnedEntry, ', testing') // error
 
         // Add the new entry to the list of entries
         // setEntries([...entries, newEntry])
@@ -65,7 +67,8 @@ const App = () => {
     const ShowEntryWrapper = () => {
         // Get id from useParams
         const { id } = useParams()
-        // console.log(id)
+        // console.log(useParams(), ',testing') // undefined
+        // console.log(id, 'testing') // undefined
 
         // Get entry with the given id
         const entry = entries.find((e) => e._id == id)
@@ -74,6 +77,7 @@ const App = () => {
         // console.log(categories)
         // const cat = categories.find(c => c._id == entry.category)
         const cat = entry ? categories.find(c => c._id == entry.category) : ''
+        
         // Pass category as a prop
         // return entry ? <ShowEntry entry={entry} category={category} /> : <h3>Entry not found!</h3>
         return entry ? <ShowEntry content={entry.content} category={cat.name} /> : <h3>Entry not found!</h3>

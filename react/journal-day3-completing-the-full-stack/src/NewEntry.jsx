@@ -16,7 +16,11 @@ const NewEntry = ({ categories, addEntry }) => {
         e.preventDefault()
         // Add the new entry to the list of entries
         const id = await addEntry(cat._id, content)
-        // console.log(cat._id)
+
+        // console.log(cat._id) // 66b17aceb555d816be2437da
+        // console.log(content) // ok
+        // console.log(id) // undefined ??
+
         // Return success message or redirect to the entry
         nav(`/entry/${id}`)
     }
