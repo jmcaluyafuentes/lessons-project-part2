@@ -72,12 +72,14 @@ const App = () => {
 
         // Get entry with the given id
         const entry = entries.find((e) => e._id == id)
-        // console.log(entry)
+        // console.log(entry, ', testing') // OK
 
-        // console.log(categories)
+        // console.log(categories, ', testing') // OK
         // const cat = categories.find(c => c._id == entry.category)
-        const cat = entry ? categories.find(c => c._id == entry.category) : ''
+        // console.log(entry.category, ', testing') // OK
+        const cat = entry ? categories.find(c => c._id == entry.category._id) : ''
         
+        // console.log(cat, ', testing') // OK
         // Pass category as a prop
         // return entry ? <ShowEntry entry={entry} category={category} /> : <h3>Entry not found!</h3>
         return entry ? <ShowEntry content={entry.content} category={cat.name} /> : <h3>Entry not found!</h3>

@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 const NewEntry = ({ categories, addEntry }) => {
   const { cat_id } = useParams() // useParams always returns a string
 
   const [content, setContent] = useState('')
+  const nav = useNavigate()
+  // console.log(nav)
 
   const cat = categories.find((cat) => cat.id == cat_id) // cat.id from categories is a number while cat_id is a string, thus, use non-strict equality to perform type coersion
   // console.log(cat_name)
@@ -14,6 +16,7 @@ const NewEntry = ({ categories, addEntry }) => {
     // Add the new entry to the list of entries
     addEntry(cat.id, content)
     // Return success message or redirect to the entry
+    nav(`/entry/${cat.id}`)
   }
   
   return cat ? ( 

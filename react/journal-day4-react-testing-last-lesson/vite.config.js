@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   // Add test config
   test: {
-    environment: 'jsdom', // The test will take place in jsdom
-    globals: true // Some tests won't work without this 
+    environment: 'jsdom', // The test will take place in jsdom (virtual dom environment)
+    globals: true // Some tests won't work without this
   }
 })

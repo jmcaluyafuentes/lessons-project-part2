@@ -4,6 +4,7 @@ import Home from './Home'
 import CategorySelection from './CategorySelection'
 import NewEntry from './NewEntry'
 import NavBar from './NavBar'
+import ShowEntry from './ShowEntry'
 
 const App = () => {
   const [categories, setCategories] = useState([
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/category" element={<CategorySelection categories={categories}/>} />
           <Route path="/entry">
+            <Route path=':id' element={<ShowEntry entries={entries}/>}></Route>
             <Route path="new/:cat_id" element={<NewEntry categories={categories} addEntry={addEntry}/>} />
           </Route>
           <Route path="*" element={<h3>Page not found</h3>} />

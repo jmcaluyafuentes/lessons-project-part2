@@ -4,7 +4,7 @@
 // https://github.com/testing-library/jest-dom?tab=readme-ov-file
 
 
-import '@testing-library/jest-dom' // THis needs to be the first import
+import '@testing-library/jest-dom' // This needs to be the first import
 import { render, screen } from '@testing-library/react'
 import { BrowserRouter } from "react-router-dom"
 import user from '@testing-library/user-event' // Use to simulate user events
