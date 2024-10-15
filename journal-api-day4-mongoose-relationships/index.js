@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 
 // Refactor: Move to db.js
 // import mongoose from 'mongoose'
@@ -35,6 +36,7 @@ import { Entry, Category } from './db.js'
 // })
 
 const app = express()
+app.use(cors())
 
 app.use(express.json())
 
