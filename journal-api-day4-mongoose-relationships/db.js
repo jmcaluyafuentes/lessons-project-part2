@@ -9,22 +9,24 @@ mongoose.connect(process.env.DB_URI)
 
 const entrySchema = {
     // category: { type: String, required: true },
+    category: { type: mongoose.ObjectId, ref: 'Category', required: true},
     content: { type: String, required: true }
 }
 
-const Entry = mongoose.model('Entry', {
+const Entry = mongoose.model('Entry', entrySchema) 
+// {
 
     // Refactor: abstract this to entrySchema
     // category: { type: String, required: true },
     // content: { type: String, required: true }
-})
+// })
 
 const Category = mongoose.model('Category', {
     name: { type: String, required: true },
 
     // Rather than storing the entries indipendently, they will be embedded or nested in categories collection
     // Seed will be created differently because schema is changed
-    entries: [entrySchema]
+    // entries: [entrySchema]
 })
 
 // index.js needs to access Entry model
