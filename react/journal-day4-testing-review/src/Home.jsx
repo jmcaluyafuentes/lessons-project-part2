@@ -5,6 +5,7 @@ const Home = ({ entries }) => {
   return (
     // <div>Hello World</div>
     <>
+      <h2>Entries</h2>
       <ul>
         {entries.map(entry => (
           <li key={entry._id}>
